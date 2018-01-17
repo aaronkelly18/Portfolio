@@ -16,8 +16,8 @@ function makeGrid(width, height) {
 
 // set default values
 colorPicker.val("#00b5e9");
-inputWidth.val(20);
-inputHeight.val(20);
+inputWidth.val(40);
+inputHeight.val(40);
 
 // make default grid
 makeGrid(inputWidth.val(), inputHeight.val());
