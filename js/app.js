@@ -4,15 +4,15 @@ let deck = document.querySelector('.deck');
 let openedCards = [];
 let changeMovesNumber = document.getElementById('moves');
 let matchCount =0;
-const button = document.getElementById('play-again');
 let starN=0;
 let time = '00:00'
 let seconds = 0;
 let minutes = 0;
 let timeTiger= 0;
 let t;
+const button = document.getElementById('play-again');
 const timer = document.getElementById('timer');
-const modal = document.getElementById('MModal');
+const modal = document.getElementById('Popup');
 const modalHeading = document.querySelector('#modal-heading');
 let modalMessage='';
 
@@ -20,7 +20,6 @@ window.onload = function() {
  newGame();
 };
 
-/* Restars the game */
 let restartClick = document.getElementById('restartClick');
 restartClick.addEventListener('click', newGame);
 
@@ -102,7 +101,6 @@ function showCard (){
 
 function addToOpenCards () {
   openedCards.push(event.target);
-    // if (openedCards.length < 2);
 }
 
 function match(){
@@ -134,25 +132,6 @@ function resetMovesCount(){
   changeMovesNumber.textContent =  moves;
 }
 
-function starRating (){
-  if (moves > 8 && moves < 21){
-    starN = 3;
-  }
-  if (moves > 20 && moves < 30 ) {
-    document.getElementById('one').innerHTML ='<i class="fa fa-star-o"></i>';
-    starN = 2;
-  } if (moves > 30) {
-    document.getElementById('one').innerHTML ='<i class="fa fa-star-o"></i>';
-    document.getElementById('two').innerHTML ='<i class="fa fa-star-o"></i>';
-    starN = 1;
-  }
-}
-
-function resetStarRating (){
-  document.getElementById('one').innerHTML ='<i class="fa fa-star"></i>';
-  document.getElementById('two').innerHTML ='<i class="fa fa-star"></i>';
-}
-
 function startTimer() {
        clearInterval(t);
       t = setInterval(buildTimer,1000);
@@ -168,6 +147,25 @@ function buildTimer () {
                 minutes = 0;
                 seconds = 0;
             }
+        }
+        
+        function starRating (){
+          if (moves > 8 && moves < 21){
+            starN = 3;
+          }
+          if (moves > 20 && moves < 30 ) {
+            document.getElementById('one').innerHTML ='<i class="fa fa-star-o"></i>';
+            starN = 2;
+          } if (moves > 30) {
+            document.getElementById('one').innerHTML ='<i class="fa fa-star-o"></i>';
+            document.getElementById('two').innerHTML ='<i class="fa fa-star-o"></i>';
+            starN = 1;
+          }
+        }
+
+        function resetStarRating (){
+          document.getElementById('one').innerHTML ='<i class="fa fa-star"></i>';
+          document.getElementById('two').innerHTML ='<i class="fa fa-star"></i>';
         }
 timer.textContent = (minutes < 10 ? "0" + minutes.toString(): minutes) + ":" + (seconds < 10 ? "0" + seconds.toString(): seconds);
 }
@@ -188,7 +186,7 @@ function resetTimer () {
 
 function gameEnd () {
   modalMessage = document.createElement('p');
-  modalMessage.innerHTML = '<p>Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars !</br> WOOO!</p>';
+  modalMessage.innerHTML = '<p>Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars!</p>';
   modalMessage.classList.add('modal-text');
   modalHeading.appendChild(modalMessage);
   modal.style.display = 'block';
@@ -215,6 +213,6 @@ window.onclick = function(event) {
    localStorage.setItem('timer', timer.textContent);
 
    const addResults = document.getElementById('result');
-   let resultTextToAdd = 'Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars</ br></p>';
+   let resultTextToAdd = 'Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars</p>';
   addResults.insertAdjacentHTML('afterend', resultTextToAdd);
   }
