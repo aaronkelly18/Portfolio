@@ -12,7 +12,7 @@ let minutes = 0;
 let timeTiger= 0;
 let t;
 const timer = document.getElementById('timer');
-const modal = document.getElementById('Modal');
+const modal = document.getElementById('MModal');
 const modalHeading = document.querySelector('#modal-heading');
 let modalMessage='';
 
