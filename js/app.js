@@ -1,4 +1,3 @@
-// JavaScript Document
 let card = document.getElementsByClassName('card');
 let cards = [...card];
 let deck = document.querySelector('.deck');
@@ -21,18 +20,18 @@ window.onload = function() {
  newGame();
 };
 
-/* RESTART THE GAME */
+/* Restars the game */
 let restartClick = document.getElementById('restartClick');
 restartClick.addEventListener('click', newGame);
 
-/* shuffle the list of cards with "shuffle" method */
-// let shuffledCards = shuffle(cards);
-// newGame();
-
 /*
-*Setting up the cards for the game:
-*Shuffle function from http://stackoverflow.com/a/2450976
-*/
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
+
+// Shuffle function from http://stackoverflow.com/a/2450976
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -48,10 +47,6 @@ function shuffle(array) {
 
   return array;
 }
-
-/*
-*displays the cards. loops through each card
-*/
 
 function newCards(){
     let shuffleCards = shuffle(cards);
@@ -75,7 +70,6 @@ function newGame() {
     newCards();
 }
 
-/* When the card is clicked the time and comparison starts */
 function clickedCards (){
   showCard();
   addToOpenCards();
@@ -95,8 +89,6 @@ function clickedCards (){
       }
   }
 
-
-/* displays the cards picture */
 function showCard (){
   console.log(event.target.tagName);
   const cardTagName = event.target
@@ -110,9 +102,9 @@ function showCard (){
 
 function addToOpenCards () {
   openedCards.push(event.target);
+    // if (openedCards.length < 2);
 }
 
-/* Checks to see if the cards match */
 function match(){
   openedCards[0].classList.add('match', 'trick');
   event.target.classList.add('match', 'trick');
@@ -130,8 +122,6 @@ function notMatch (){
 }
 };
 
-/* This is a delay for when you open the cards and they do not match*/
-
 function addMoves(){
   moves++;
   console.log(moves);
@@ -144,9 +134,8 @@ function resetMovesCount(){
   changeMovesNumber.textContent =  moves;
 }
 
-/* Removes stars */
 function starRating (){
-  if (moves > 8 && moves < 15){
+  if (moves > 8 && moves < 21){
     starN = 3;
   }
   if (moves > 20 && moves < 30 ) {
@@ -197,10 +186,9 @@ function resetTimer () {
   timer.textContent = time;
  }
 
-/* When the user clicks on the last card the modal opens */
 function gameEnd () {
   modalMessage = document.createElement('p');
-  modalMessage.innerHTML = '<p>Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars !</br></p>';
+  modalMessage.innerHTML = '<p>Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars !</br> WOOO!</p>';
   modalMessage.classList.add('modal-text');
   modalHeading.appendChild(modalMessage);
   modal.style.display = 'block';
@@ -219,3 +207,14 @@ window.onclick = function(event) {
     resetTimer();
   }
 };
+
+
+ function scoreRepository() {
+   localStorage.setItem('moves', moves);
+   localStorage.setItem('star_number', starN);
+   localStorage.setItem('timer', timer.textContent);
+
+   const addResults = document.getElementById('result');
+   let resultTextToAdd = 'Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars</ br></p>';
+  addResults.insertAdjacentHTML('afterend', resultTextToAdd);
+  }
