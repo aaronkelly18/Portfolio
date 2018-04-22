@@ -18,7 +18,7 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/new.jpg'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/new.jpg');
     font-family: 'Coda', cursive;
 }
 
@@ -27,6 +27,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: blue;
 }
 
 h1 {
@@ -89,10 +90,10 @@ h1 {
 }
 
 .score-panel .stars {
-
     margin: 0;
     padding: 0;
     display: inline-block;
+    color: yellow;
 }
 
  .score-panel p {
@@ -105,6 +106,16 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.play-again-button{
+  cursor: pointer;
+  font-size:1.5em;
+  padding: 5px;
+  margin: 10px;
+}
+.play-again-button:hover{
+  color: gray;
 }
 
 .modal {
@@ -130,15 +141,6 @@ h1 {
     text-align: center;
 }
 
-.play-again-button{
-  cursor: pointer;
-  font-size:1.5em;
-  padding: 5px;
-  margin: 10px;
-}
-.play-again-button:hover{
-  color: green;
-}
 .modal-text{
     font-size: 24px;
     line-height: 36px;
