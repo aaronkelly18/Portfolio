@@ -4,15 +4,15 @@ let deck = document.querySelector('.deck');
 let openedCards = [];
 let changeMovesNumber = document.getElementById('moves');
 let matchCount =0;
+const button = document.getElementById('play-again');
 let starN=0;
 let time = '00:00'
 let seconds = 0;
 let minutes = 0;
 let timeTiger= 0;
 let t;
-const button = document.getElementById('play-again');
 const timer = document.getElementById('timer');
-const modal = document.getElementById('Popup');
+const modal = document.getElementById('myModal');
 const modalHeading = document.querySelector('#modal-heading');
 let modalMessage='';
 
@@ -23,14 +23,10 @@ window.onload = function() {
 let restartClick = document.getElementById('restartClick');
 restartClick.addEventListener('click', newGame);
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
+/* shuffle the list of cards with "shuffle" method
+*Setting up the cards for the game:
+*Shuffle function from http://stackoverflow.com/a/2450976
+*/
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -46,6 +42,7 @@ function shuffle(array) {
 
   return array;
 }
+
 
 function newCards(){
     let shuffleCards = shuffle(cards);
@@ -132,6 +129,28 @@ function resetMovesCount(){
   changeMovesNumber.textContent =  moves;
 }
 
+/* Stars */
+function starRating (){
+  if (moves > 9 && moves < 21){
+    starN = 3;
+  }
+  if (moves > 20 && moves < 30 ) {
+    document.getElementById('one').innerHTML ='<i class="fa fa-star-o"></i>';
+    starN = 2;
+  } if (moves > 30) {
+    document.getElementById('one').innerHTML ='<i class="fa fa-star-o"></i>';
+    document.getElementById('two').innerHTML ='<i class="fa fa-star-o"></i>';
+    starN = 1;
+  }
+}
+
+function resetStarRating (){
+  document.getElementById('one').innerHTML ='<i class="fa fa-star"></i>';
+  document.getElementById('two').innerHTML ='<i class="fa fa-star"></i>';
+}
+
+/*Timer*/
+
 function startTimer() {
        clearInterval(t);
       t = setInterval(buildTimer,1000);
@@ -147,25 +166,6 @@ function buildTimer () {
                 minutes = 0;
                 seconds = 0;
             }
-        }
-        
-        function starRating (){
-          if (moves > 8 && moves < 21){
-            starN = 3;
-          }
-          if (moves > 20 && moves < 30 ) {
-            document.getElementById('one').innerHTML ='<i class="fa fa-star-o"></i>';
-            starN = 2;
-          } if (moves > 30) {
-            document.getElementById('one').innerHTML ='<i class="fa fa-star-o"></i>';
-            document.getElementById('two').innerHTML ='<i class="fa fa-star-o"></i>';
-            starN = 1;
-          }
-        }
-
-        function resetStarRating (){
-          document.getElementById('one').innerHTML ='<i class="fa fa-star"></i>';
-          document.getElementById('two').innerHTML ='<i class="fa fa-star"></i>';
         }
 timer.textContent = (minutes < 10 ? "0" + minutes.toString(): minutes) + ":" + (seconds < 10 ? "0" + seconds.toString(): seconds);
 }
@@ -184,9 +184,10 @@ function resetTimer () {
   timer.textContent = time;
  }
 
+
 function gameEnd () {
   modalMessage = document.createElement('p');
-  modalMessage.innerHTML = '<p>Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars!</p>';
+  modalMessage.innerHTML = '<p>Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars !</br></p>';
   modalMessage.classList.add('modal-text');
   modalHeading.appendChild(modalMessage);
   modal.style.display = 'block';
@@ -213,6 +214,6 @@ window.onclick = function(event) {
    localStorage.setItem('timer', timer.textContent);
 
    const addResults = document.getElementById('result');
-   let resultTextToAdd = 'Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars</p>';
+   let resultTextToAdd = 'Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars</ br></p>';
   addResults.insertAdjacentHTML('afterend', resultTextToAdd);
   }

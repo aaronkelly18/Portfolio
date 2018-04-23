@@ -2,32 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Memory Game</title>
+    <title>Matching Game</title>
     <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Memory Card Game</h1>
-        </header>
+  <header>
+      <h1>Matching Game</h1>
+  </header>
 
+    <div class="container">
         <section class="score-panel">
         	<ul class="stars">
-        		<li id="one"><i class="fa fa-star"></i></li>
+            <li id="one"><i class="fa fa-star"></i></li>
         		<li id="two"><i class="fa fa-star"></i></li>
         		<li id="three"><i class="fa fa-star"></i></li>
         	</ul>
+
           <p><span id="moves">0</span> Moves</p>
           <div id="timer">00:00</div>
-            <button id="restartClick">
-        		<i class="fa fa-repeat"></i>
+          <button id="restartClick">
+        		<i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="false"></i>
         	</button>
+
         </section>
+
         <ul class="deck">
             <li class="card">
                 <i class="fa fa-diamond"></i>
@@ -35,7 +38,7 @@
             <li class="card">
                 <i class="fa fa-paper-plane-o"></i>
             </li>
-            <li class="card">
+            <li class="card match">
                 <i class="fa fa-anchor"></i>
             </li>
             <li class="card">
@@ -44,7 +47,7 @@
             <li class="card">
                 <i class="fa fa-cube"></i>
             </li>
-            <li class="card">
+            <li class="card match">
                 <i class="fa fa-anchor"></i>
             </li>
             <li class="card">
@@ -65,7 +68,7 @@
             <li class="card">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="card">
+            <li class="card open show">
                 <i class="fa fa-bolt"></i>
             </li>
             <li class="card">
@@ -79,15 +82,19 @@
             </li>
         </ul>
     </div>
-
-<div id="Popup" class="modal">
+    <div id="myModal" class="modal">
   <div class="modal-content">
 
-    <h1 id="modal-heading">Congratulations! You Have Won The Game!</h1>
+    <h1 id="modal-heading">Congratulations You have Won!</h1>
     <button id="play-again" class="play-again-button">Play again</button>
   </div>
 </div>
 
     <script src="js/app.js"></script>
 </body>
+
+<footer>
+  <p>Memory Game Created By Aaron Kelly</p>
+  <p>Contact information: <a href="mailto:someone@example.com">mraaronkelly15@gmail.com</a>.</p>
+</footer>
 </html>
