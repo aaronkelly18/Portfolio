@@ -22,12 +22,13 @@ Header
   flex-direction: column;
   color: blue;
 }
+
 footer
 {
-  /*display: flex;*/
   justify-content: center;
   text-align: center;
 }
+
 html,
 body {
     width: 100%;
@@ -107,10 +108,10 @@ h1 {
     pointer-events: none;
 }
 .trick {
-   -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
     transition: width 2s, height 2s, transform 2s;
-      -webkit-transform: rotate(360deg); /* Safari */
+      -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
 }
 
 .score-panel {
@@ -318,9 +319,4 @@ h1{
 .score-panel .restart {
     padding: 0 12px 0 12px;
 }
-}
-@media screen and (min-width: 701px) and (max-width: 1000px){
- .result-board{
-    width: 60%;
-  }
 }
