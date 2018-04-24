@@ -20,6 +20,7 @@ window.onload = function() {
  newGame();
 };
 
+/*This is the restart button */
 let restartClick = document.getElementById('restartClick');
 restartClick.addEventListener('click', newGame);
 
@@ -55,6 +56,8 @@ function newCards(){
   }
 }
 
+/*This is the start of a new game. Resets the Moves, Conter and stars */
+
 function newGame() {
     resetMovesCount();
     resetStarRating();
@@ -65,6 +68,8 @@ function newGame() {
     modalMessage.innerHTML = '';
     newCards();
 }
+
+/*This will check for when you first pick a card and will start the timer */
 
 function clickedCards (){
   showCard();
@@ -100,6 +105,7 @@ function addToOpenCards () {
   openedCards.push(event.target);
 }
 
+/*This function checks the opened cards */
 function match(){
   openedCards[0].classList.add('match', 'trick');
   event.target.classList.add('match', 'trick');
@@ -108,6 +114,7 @@ function match(){
   openedCards = [];
  }
 
+/*If the cards don't match, It will flip them back */
 function notMatch (){
     setTimeout(function(){
     openedCards[0].classList.remove('open', 'show');
@@ -144,12 +151,13 @@ function starRating (){
   }
 }
 
+/*This resets the stars */
 function resetStarRating (){
   document.getElementById('one').innerHTML ='<i class="fa fa-star"></i>';
   document.getElementById('two').innerHTML ='<i class="fa fa-star"></i>';
 }
 
-/*Timer*/
+/*This is the timer*/
 
 function startTimer() {
        clearInterval(t);
@@ -170,6 +178,7 @@ function buildTimer () {
 timer.textContent = (minutes < 10 ? "0" + minutes.toString(): minutes) + ":" + (seconds < 10 ? "0" + seconds.toString(): seconds);
 }
 
+/*This will stop the clock and end the game once you find all 8 pairs. */
 function stopClock () {
    if (matchCount === 8){
      clearInterval(t);
@@ -184,7 +193,7 @@ function resetTimer () {
   timer.textContent = time;
  }
 
-
+/*This is the popup box upon completion of the game. It will show your score. Moves, time, Stars */
 function gameEnd () {
   modalMessage = document.createElement('p');
   modalMessage.innerHTML = '<p>Your time '+ timer.textContent + ', '+ moves + ' Moves and ' + starN + ' Stars !</br></p>';
