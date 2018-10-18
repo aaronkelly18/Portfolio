@@ -27,6 +27,8 @@ If your moves exceed 30, You will drop to one star
 
 ## Resources
 
+### Live version here: https://hotshotdev.github.io/
+
 ### Shuffle function
 <http://stackoverflow.com/a/2450976>
 
